@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zb_bos_management:war">
+    <output-path>$PROJECT_DIR$/zb_bos_management/target</output-path>
+    <root id="archive" name="bos.war">
+      <element id="artifact" artifact-name="zb_bos_management:war exploded" />
+    </root>
+  </artifact>
+</component>

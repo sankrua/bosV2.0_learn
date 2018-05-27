@@ -17,4 +17,7 @@ public interface CourierService {
 	//分页查询
 	public Page<Courier> findPageData(Specification<Courier> spec,Pageable pageable);
 
+	//皮脸作废
+	public void delBatch(String[] idArray);
+
 }
