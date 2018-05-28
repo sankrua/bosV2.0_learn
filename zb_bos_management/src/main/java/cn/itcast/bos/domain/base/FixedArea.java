@@ -1,5 +1,7 @@
 package cn.itcast.bos.domain.base;
 
+import org.apache.struts2.json.annotations.JSON;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -96,7 +98,7 @@ public class FixedArea {
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
-
+	@JSON(serialize = false)
 	public Set<SubArea> getSubareas() {
 		return subareas;
 	}
@@ -104,7 +106,7 @@ public class FixedArea {
 	public void setSubareas(Set<SubArea> subareas) {
 		this.subareas = subareas;
 	}
-
+	@JSON(serialize = false)
 	public Set<Courier> getCouriers() {
 		return couriers;
 	}
@@ -129,4 +131,17 @@ public class FixedArea {
 		this.company = company;
 	}
 
+	@Override
+	public String toString() {
+		return "FixedArea{" +
+				"id='" + id + '\'' +
+				", fixedAreaName='" + fixedAreaName + '\'' +
+				", fixedAreaLeader='" + fixedAreaLeader + '\'' +
+				", telephone='" + telephone + '\'' +
+				", company='" + company + '\'' +
+				", operatingTime=" + operatingTime +
+				", operator='" + operator + '\'' +
+				", operatingCompany='" + operatingCompany + '\'' +
+				'}';
+	}
 }

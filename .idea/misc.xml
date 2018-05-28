@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/crm_management" />
     <file type="web" url="file://$PROJECT_DIR$/zb_bos_management" />
   </component>
   <component name="MavenProjectsManager">
@@ -8,6 +9,8 @@
       <list>
         <option value="$PROJECT_DIR$/zb_bos_management/pom.xml" />
         <option value="$PROJECT_DIR$/zb_common_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/crm_domain/pom.xml" />
+        <option value="$PROJECT_DIR$/crm_management/pom.xml" />
       </list>
     </option>
   </component>

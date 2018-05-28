@@ -6,10 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="crm_domain" />
+        <module name="crm_management" />
         <module name="zb_bos_management" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="crm_domain" target="1.8" />
+      <module name="crm_management" target="1.8" />
       <module name="zb_bos_management" target="1.8" />
       <module name="zb_common_parent" target="1.5" />
     </bytecodeTargetLevel>

@@ -15,6 +15,23 @@
 		<script type="text/javascript" src="../../js/easyui/ext/jquery.cookie.js"></script>
 		<script src="../../js/easyui/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
 		<script type="text/javascript">
+            $.fn.serializeJson = function() {
+                var serializeObj = {};
+                var array = this.serializeArray();
+                var str = this.serialize();
+                $(array).each(function() {
+                    if(serializeObj[this.name]) {
+                        if($.isArray(serializeObj[this.name])) {
+                            serializeObj[this.name].push(this.value);
+                        } else {
+                            serializeObj[this.name] = [serializeObj[this.name], this.value];
+                        }
+                    } else {
+                        serializeObj[this.name] = this.value;
+                    }
+                });
+                return serializeObj;
+            };
 			function doAdd(){
 				$('#addWindow').window("open");
 			}
@@ -129,7 +146,7 @@
 					pageList: [30,50,100],
 					pagination : true,
 					toolbar : toolbar,
-					url : "../../data/fixed_area.json",
+					url : "../../fixedArea_pageQuery.action",
 					idField : 'id',
 					columns : columns,
 					onDblClickRow : doDblClickRow
@@ -156,10 +173,24 @@
 			        height: 400,
 			        resizable:false
 			    });
+				//执行定区数据分页条件查询
 				$("#btn").click(function(){
-					alert("执行查询...");
+					//将查询表单数据转换为json
+                    var params = $("#searchForm").serializeJson();
+                    //将查询数据绑定datagrid
+                    $("#grid").datagrid('load',params);
+                    //关闭查询窗口
+                    $("#searchWindow").window('close');
 				});
-				
+
+				//点击添加定区的保存按钮，实现添加定区
+                $("#save").click(function () {
+                    if ($("#fixedAreaForm").form('validate')){
+                        $("#fixedAreaForm").submit();
+                    }else {
+                        $.messager.alert("警告","表单存在非法数据项!","warning");
+                    }
+                });
 			});
 		
 			function doDblClickRow(){
@@ -339,7 +370,7 @@
 			</div>
 
 			<div style="overflow:auto;padding:5px;" border="false">
-				<form>
+				<form id="fixedAreaForm" action="../../fixedArea_save.action" method="post">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="2">定区信息</td>
@@ -353,7 +384,7 @@
 						<tr>
 							<td>定区名称</td>
 							<td>
-								<input type="text" name="name" class="easyui-validatebox" required="true" />
+								<input type="text" name="fixedAreaName" class="easyui-validatebox" required="true" />
 							</td>
 						</tr>
 						<tr>
@@ -381,7 +412,7 @@
 		<!-- 查询定区 -->
 		<div class="easyui-window" title="查询定区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 			<div style="overflow:auto;padding:5px;" border="false">
-				<form>
+				<form id="searchForm">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="2">查询条件</td>

@@ -1,13 +1,15 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="zb_bos_management:war exploded">
-    <output-path>$PROJECT_DIR$/zb_bos_management/target/bos</output-path>
+  <artifact type="exploded-war" name="crm_management:war exploded">
+    <output-path>$PROJECT_DIR$/crm_management/target/bos</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="zb_bos_management" />
+          <element id="module-output" name="crm_management" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: pinyin4j:pinyin4j:2.5.0" />
+          <element id="archive" name="crm_domain-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="crm_domain" />
+          </element>
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-all:1.2.2" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-guice:1.2.2" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.2" />
@@ -107,9 +109,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/zb_bos_management/target/bos/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/crm_management/target/bos/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="zb_bos_management/web/Web" />
+      <element id="javaee-facet-resources" facet="crm_management/web/Web" />
     </root>
   </artifact>
 </component>
