@@ -81,6 +81,8 @@ public class StandardAction extends ActionSupport implements ModelDriven<Standar
 	}
 	
 	//查询所有取派标准
+
+
 	@Action(value="standard_findAll",results={@Result(name="success",type="json")})
 	public String findAll(){
 		List<Standard> standards = standardService.findAll();
